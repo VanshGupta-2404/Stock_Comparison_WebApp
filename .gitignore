@@ -1,0 +1,9 @@
+# Python
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/*.db
+.env
+
+# macOS
+.DS_Store
