@@ -1,7 +1,15 @@
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.VITE_API_URL || "https://stock-comparison-webapp.onrender.com";
+
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api',
+  baseURL: `${BASE_URL}/api`,
+});
+
+// Add a request interceptor to log outgoing requests
+api.interceptors.request.use(config => {
+  console.log("Calling API:", config.baseURL + (config.url || ""));
+  return config;
 });
 
 export const getCompanies = () => api.get('/companies').then(res => res.data);

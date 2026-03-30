@@ -56,6 +56,7 @@ def get_stock_summary(symbol: str, db: Session = Depends(get_db)):
 @router.get("/compare", response_model=schemas.ComparisonResponse)
 def compare_stocks(symbol1: str, symbol2: str, db: Session = Depends(get_db)):
     """Compare two stocks (returns, trends)"""
+    print(f"Compare API hit: {symbol1}, {symbol2}")
     if symbol1 not in stock_service.AVAILABLE_SYMBOLS or symbol2 not in stock_service.AVAILABLE_SYMBOLS:
         raise HTTPException(status_code=404, detail="One or more symbols not found")
         
